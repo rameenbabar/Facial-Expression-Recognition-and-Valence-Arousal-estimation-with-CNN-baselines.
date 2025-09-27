@@ -79,3 +79,75 @@ Annotations are stored as `.npy` files (`_exp.npy`, `_val.npy`, `_aro.npy`).
 3. Open the notebook in Google Colab, mount your Google Drive, and set `DATA_ROOT` to point to your dataset folder.
 
 ## Results
+
+### Categorical Classification
+
+<table>
+  <tr>
+    <th>Model</th><th>ACC</th><th>F1_macro</th><th>Kappa</th>
+    <th>Alpha</th><th>AUC_macro</th><th>AUPR_macro</th>
+  </tr>
+  <tr>
+    <td>EfficientNet-B0</td>
+    <td>0.4708</td><td>0.4705</td><td>0.3954</td><td>0.3940</td>
+    <td><b>0.8378</b></td><td><b>0.4862</b></td>
+  </tr>
+  <tr>
+    <td>MobileNetV3-Large</td>
+    <td><b>0.4858</b></td><td><b>0.4798</b></td><td><b>0.4114</b></td><td><b>0.4097</b></td>
+    <td>0.8179</td><td>0.4617</td>
+  </tr>
+</table>
+
+<p><i>MobileNetV3-Large slightly outperforms EfficientNet-B0 on classification accuracy and F1, 
+while EfficientNet-B0 shows stronger AUC and AUPR, suggesting better ranking ability for imbalanced data.</i></p>
+
+---
+
+## Continuous Metrics
+
+<table>
+  <tr>
+    <th>Model</th><th>RMSE_val</th><th>RMSE_aro</th><th>CORR_val</th><th>CORR_aro</th>
+    <th>SAGR_val</th><th>SAGR_aro</th><th>CCC_val</th><th>CCC_aro</th>
+  </tr>
+  <tr>
+    <td>EfficientNet-B0</td>
+    <td><b>0.3772</b></td><td>0.3511</td><td><b>0.6121</b></td><td><b>0.4881</b></td>
+    <td><b>0.7629</b></td><td>0.7496</td><td><b>0.5783</b></td><td><b>0.4040</b></td>
+  </tr>
+  <tr>
+    <td>MobileNetV3-Large</td>
+    <td>0.4027</td><td><b>0.3487</b></td><td>0.5435</td><td>0.3922</td>
+    <td>0.7579</td><td><b>0.7913</b></td><td>0.4803</td><td>0.3442</td>
+  </tr>
+</table>
+
+<p><i>EfficientNet-B0 achieves lower RMSE, higher correlation, and stronger concordance on valence/arousal, 
+indicating better regression performance. MobileNet, however, shows stronger SAGR for arousal, 
+capturing correct polarity more often.</i></p>
+
+---
+
+## Speed–Accuracy Trade-off
+
+<table>
+  <tr>
+    <th>Model</th><th>Best ACC</th><th>Training Time (10 epochs)</th>
+  </tr>
+  <tr>
+    <td>EfficientNet-B0</td>
+    <td>0.4708 (47%)</td><td>46.5 min</td>
+  </tr>
+  <tr>
+    <td>MobileNetV3-Large</td>
+    <td><b>0.4858 (~49%)</b></td><td><b>12.1 min</b></td>
+  </tr>
+</table>
+
+<p><i>MobileNetV3-Large trains nearly 4× faster than EfficientNet-B0 while delivering slightly 
+better classification accuracy, making it a strong candidate for real-time or resource-constrained settings.</i></p>
+
+---
+
+
