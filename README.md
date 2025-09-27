@@ -59,10 +59,23 @@ Annotations are stored as `.npy` files (`_exp.npy`, `_val.npy`, `_aro.npy`).
 
 ---
 
-## ⚡ How to Run
+## How to Run
 
 1. Clone the repo:
    ```bash
    git clone https://github.com/<your-username>/Facial-Expression-Recognition-and-Valence–Arousal-estimation-with-CNN-baselines.git
    cd Facial-Expression-Recognition-and-Valence–Arousal-estimation-with-CNN-baselines
    ```
+---
+
+2. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+3. Open the notebook in Google Colab, mount your Google Drive, and set `DATA_ROOT` to point to your dataset folder.
+
+## Results
